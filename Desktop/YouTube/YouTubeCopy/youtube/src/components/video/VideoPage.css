@@ -1,0 +1,97 @@
+.videoPage {
+    flex: 0.8;
+}
+
+.videoInformation {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+.videoInformation1 {
+    width: 60%;
+}
+
+.mediaPlayer {
+    max-height: 500px !important;
+}
+.commentInput {
+    height: 80px;
+    width: 60%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+.input,
+.textarea {
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
+  }
+  .textarea {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    resize: both;
+    min-height: 100px;
+    line-height: 20px;
+  }
+  .commentSection {
+      width: 60%;
+  }
+  .comment {
+      border: 1px solid lightgray
+  }
+  .firstRowComment {
+      display: flex;
+      align-items: center;
+  }
+  .like {
+      display: flex;
+      align-items: center;
+  }
+  .dislikeIcon {
+      padding-left: 10px;
+      padding-right: 5px;
+  }
+
+  .likeDislike {
+      padding-right: 5px;
+  }
+  
+
+
+@media (max-width: 700px) {
+    .videoPage {
+    flex: 1;
+    }
+    .mediaPlayer {
+        width: 100%;
+    }
+    .videoInformation {
+        width: 100%;
+    }
+    .videoInformation1 {
+        width: 100%;
+    }
+    .videoTitle {
+        padding-right: 30px;
+    }
+    .videoInformation1 {
+        width: 100%;
+    }
+    }
+
+@media (max-width: 700px) {
+    .videoInformation1 {
+        width: 100%;
+    }
+    .textarea {
+        width: 100%;
+    }
+    hr {
+        width: 100%;
+    }
+    .commentSection {
+        width: 100%;
+    }
+}

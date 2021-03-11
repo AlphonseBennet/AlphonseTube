@@ -1,0 +1,28 @@
+.recommended {
+    flex: 0.8;
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    padding-bottom: 0;
+}
+
+.recommended > h2 {
+    margin: 0;
+}
+
+.recommendedVideo {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.recommendedText {
+    padding-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+    .recommended {
+    flex: 1;
+    margin: auto;
+    text-align: center;
+    }
+    }

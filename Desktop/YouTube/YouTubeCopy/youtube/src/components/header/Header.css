@@ -1,0 +1,91 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+}
+.headerLogo {
+    height: 25px;
+    margin-left: 15px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+}
+
+.headerCenter  {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    border: 1px solid lightgray;
+}
+
+.headerCenter > input {
+    flex: 1;
+    border: none;
+
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+}
+
+.headerInputButton {
+    width: 50px !important; 
+    background-color: #fafafa;
+    border-left: 1px solid lightgray;
+    color: gray;
+}
+
+.headerIcon {
+    margin-right: 5px;
+}
+
+.appSignUp {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+  }
+  
+  .signUpLogo {
+    margin: auto;
+  }
+
+  .modalImage {
+      height: 30px;
+      width: auto;
+  }
+
+  @media (max-width: 700px) {
+    .menuIcon {
+        display: none;
+    }
+    .headerLogo {
+        height: 20px;
+        margin-left: 0px;
+    }
+    .headerCenter  {
+        padding-right: 45px;
+    
+    }
+    }
+
+    @media (max-width: 701px) {
+        .headerRightMedia {
+            display: none;
+        }
+        .avatarIcon {
+            display: none;
+        }
+        .signInOut {
+            display: flex;
+            flex-direction: column;
+        }
+        }

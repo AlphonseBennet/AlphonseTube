@@ -1,0 +1,33 @@
+
+
+.appPage {
+  display: flex;
+}
+
+.appSignUp {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.mobileComponent {
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+
+}
+
+@media (max-width: 20px) {
+  .hideSidebar {
+  display: none;
+  }
+  }
+
+@media (min-width: 700px) {
+  .mobileComponent {
+    display: none;
+  }
+}
