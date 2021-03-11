@@ -18,6 +18,7 @@ const VideoPage = ({ match, user }) => {
     const [comments, setComments] = useState([]);
     const [liked, setLiked] = useState(false);
     const [disliked, setDisliked] = useState(false);
+    const [currentLikes, setCurrentLikes] = useState(videoInfo.likes);
 
     console.log("Math props:", videoId)
     
@@ -61,17 +62,16 @@ const VideoPage = ({ match, user }) => {
 
     const addLike = () => {
         if (user) {
-            if (liked === false) {
-                setLiked(true)
+            if (liked === false && disliked === false) {
                 db.collection("videos").doc(videoId).update({
                     likes: firebase.firestore.FieldValue.increment(1)
                 })
                 
                 setLiked(true);
                 setDisliked(false);
+                setVideoInfo(Object.assign({}, videoInfo, { likes: videoInfo.likes + 1 }))
                 
             } else if (liked === false && disliked === true) {
-                setLiked(true)
                 db.collection("videos").doc(videoId).update({
                     likes: firebase.firestore.FieldValue.increment(1)
                 })
@@ -80,12 +80,13 @@ const VideoPage = ({ match, user }) => {
                 })
                 setLiked(true)
                 setDisliked(false)
+                setVideoInfo(Object.assign({}, videoInfo, { likes: videoInfo.likes + 1, dislikes: videoInfo.dislikes - 1 }))
             } else {
-                setLiked(false)
                 db.collection("videos").doc(videoId).update({
                     likes: firebase.firestore.FieldValue.increment(-1)
                 })
                 setLiked(false);
+                setVideoInfo(Object.assign({}, videoInfo, { likes: videoInfo.likes - 1 }))
             }
         } else {
             alert("Sign in")
@@ -96,15 +97,14 @@ const VideoPage = ({ match, user }) => {
 
     const addDislike = () => {
         if (user) {
-            if (disliked === false) {
-                setDisliked(true)
+            if (disliked === false && liked === false) {
                 db.collection("videos").doc(videoId).update({
                     dislikes: firebase.firestore.FieldValue.increment(1)
                 })
                 setDisliked(true);
                 setLiked(false);
+                setVideoInfo(Object.assign({}, videoInfo, {dislikes: videoInfo.dislikes + 1}))
             } else if (disliked === false && liked === true) {
-                setDisliked(true)
                 db.collection("videos").doc(videoId).update({
                     dislikes: firebase.firestore.FieldValue.increment(1)
                 })
@@ -112,14 +112,15 @@ const VideoPage = ({ match, user }) => {
                     likes: firebase.firestore.FieldValue.increment(-1)
                 })
                 setLiked(false);
-                setDisliked(true)
+                setDisliked(true);
+                setVideoInfo(Object.assign({}, videoInfo, {dislikes: videoInfo.dislikes + 1, likes: videoInfo.likes - 1}))
             }
             else {
-                setDisliked(false)
                 db.collection("videos").doc(videoId).update({
                     dislikes: firebase.firestore.FieldValue.increment(-1)
                 })
                 setDisliked(false);
+                setVideoInfo(Object.assign({}, videoInfo, {dislikes: videoInfo.dislikes - 1}))
             }
         } else {
             alert("Sign in")
@@ -149,9 +150,9 @@ const VideoPage = ({ match, user }) => {
                 <br />
                 <br />
                 <div className="like">
-                    <div  onClick={addLike} >
+                    <div onClick={addLike} >
                         {liked === false ? (<ThumbUpAltIcon className="likeDislike"/> ): (<ThumbUpAltIcon color="primary" className="likeDislike" />)}
-                        </div>
+                    </div>
                 
                 <p>{videoInfo.likes}</p>
                 <div  onClick={addDislike}>
@@ -159,9 +160,23 @@ const VideoPage = ({ match, user }) => {
                         </div>
                 <p>{videoInfo.dislikes}</p>
                 </div>
+                
                 <br />
+                <hr width="60%" />
                 <br />
+                
                 <p className="videoInformation1">
+                    <div className="videoInfoFirst">
+                        <div className="videoInfoLeft">
+                            <Avatar />
+                            <p><strong>{videoInfo.channel}</strong></p>
+                        </div>
+                        <div className="videoInfoLeft">
+                            <p>0</p>
+                            <img className="subButton" src="https://ihitthebutton.com/wp-content/uploads/2020/11/youtube-subscribe-png.png" alt="" />
+                        </div>
+                    </div>
+                    <br />
                     {videoInfo.description}
                 </p>
             </div>
@@ -181,7 +196,7 @@ const VideoPage = ({ match, user }) => {
                     {comments.map((comment) => (
                        
                         <div className="comment"> 
-                            <p className="firstRowComment"> <Avatar /> <b> {comment.channel}</b>  </p> 
+                            <p className="firstRowComment"> <Avatar  /> <p className="commentChannel"><b> {comment.channel}</b> </p> </p> 
                             <br/>                
                             <p>{comment.message}</p>
                             <br/>
