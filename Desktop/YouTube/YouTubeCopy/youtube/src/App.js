@@ -10,6 +10,7 @@ import {makeStyles, Modal, Button, Input} from '@material-ui/core';
 import {auth, db} from './Firebase'
 import VideoPage from './components/video/VideoPage';
 import MobileUpload from './components/mobileUpload/MobileUpload'
+import TrendingPage from './components/trending/TrendingPage'
 
 
 function getModalStyle() {
@@ -66,6 +67,12 @@ function App() {
       <Router>
         <Header user={user} />
         <Switch>
+          <Route path="/trending">
+            <div className="appPage">
+              <Sidebar />
+              <TrendingPage user={user}/>
+            </div>
+          </Route>
 
           <Route path="/video/:videoId">
             <div className="appPage">

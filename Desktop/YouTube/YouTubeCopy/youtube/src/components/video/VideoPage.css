@@ -37,6 +37,7 @@
   }
   .commentSection {
       width: 60%;
+      padding-bottom: 50px;
   }
   .comment {
       border: 1px solid lightgray

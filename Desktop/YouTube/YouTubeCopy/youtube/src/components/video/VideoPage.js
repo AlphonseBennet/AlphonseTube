@@ -128,6 +128,15 @@ const VideoPage = ({ match, user }) => {
         
     }
 
+    // const subToChannel = () => {
+    //     if (user) {
+    //         db.collection("users").doc(userId).collection("subscriptions").add({
+    //             subscription: videoInfo.channel,
+    //         })
+    //     } else {
+    //         alert("Sign in!")
+    //     }
+
     const signInTo = () => {
         console.log("Sign in to like");
     }
@@ -173,7 +182,10 @@ const VideoPage = ({ match, user }) => {
                         </div>
                         <div className="videoInfoLeft">
                             <p>0</p>
+                            <div>
                             <img className="subButton" src="https://ihitthebutton.com/wp-content/uploads/2020/11/youtube-subscribe-png.png" alt="" />
+                                
+                            </div>
                         </div>
                     </div>
                     <br />

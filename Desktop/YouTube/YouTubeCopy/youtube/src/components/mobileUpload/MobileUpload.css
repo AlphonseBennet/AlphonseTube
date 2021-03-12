@@ -1,25 +1,31 @@
 .mobileUploadComponent {
     display: flex;
     align-items: center;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-between;
     position: sticky;
     bottom: 0;
     z-index: 100;
-    background-color: white;
+    background-color: lightgray;
     text-decoration: none;
     padding: 10px;
 
 }
 
 .uploadButton {
-    text-decoration: solid;
-    background-color: rgb(255, 0, 242);
+    text-decoration: none;
+    color: darkred;
+
     
 }
 .uploadButtonColor {
     color: blue;
 }
 
+.addButton {
+    height: 45px !important;
+    width: 45px !important;
+}
 
 @media (min-width: 700px) {
     .mobileUploadComponent {

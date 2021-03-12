@@ -21,7 +21,9 @@ const Sidebar = () => {
             <Link to="/" className="uploadLink">
                 <SidebarRow selected Icon={HomeIcon} title="Home"/>
             </Link>
-            <SidebarRow  Icon={WhatshotIcon} title="Trending" />
+            <Link to="/trending" className="uploadLink">
+                <SidebarRow  Icon={WhatshotIcon} title="Trending" />
+            </Link>
             <SidebarRow  Icon={SubscriptionsIcon} title="Subscriptions"/>
             <hr />
             <Link to="/Upload" className="uploadLink">
